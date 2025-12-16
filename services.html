@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros Servicios | Plexos Studios</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark: #0a0a0f;
+            --darker: #050508;
+            --card-bg: #121218;
+            --primary: #8a2be2;
+            --accent: #4d79ff;
+            --accent-cyan: #00f7ff;
+            --text-light: #f0f0f0;
+            --text-muted: #a0a0b0;
+            --border-color: #2a2a35;
+            --gradient-primary: linear-gradient(135deg, var(--primary), var(--accent));
+            --border-radius: 10px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+            background: rgba(138, 43, 226, 0.1);
+        }
+
+        .nav-links a.btn {
+            background: var(--gradient-primary);
+            color: white !important;
+            margin-left: 1.5rem;
+            padding: 0.6rem 1.5rem;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+        }
+
+        .nav-links a.btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.6);
+            background: linear-gradient(135deg, #9b4dff, #5d8cff);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.6);
+        }
+
+        /* Hero Section */
+        .page-hero {
+            padding: 12rem 0 6rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+            margin-top: 60px;
+        }
+        
+        .page-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            font-size: 1.1rem;
+        }
+        
+        .services-section {
+            padding: 6rem 0;
+            background: var(--darker);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .service-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+        
+        .service-card h3 {
+            color: var(--secondary);
+            margin: 1.5rem 0 1rem;
+        }
+        
+        .feature-list {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .feature-list li {
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            padding-left: 1.8rem;
+        }
+        
+        .feature-list li:before {
+            content: '→';
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .tech-stack {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gray);
+        }
+        
+        .tech-stack span {
+            display: inline-block;
+            background: rgba(77, 121, 255, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid rgba(77, 121, 255, 0.3);
+        }
+        
+        .process-steps {
+            counter-reset: step;
+            margin: 2rem 0;
+        }
+        
+        .process-step {
+            position: relative;
+            padding-left: 4rem;
+            margin-bottom: 2rem;
+            counter-increment: step;
+        }
+        
+        .process-step:before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .service-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="plexos-landing.html" class="logo">Plexos <span>Studios</span></a>
+            <div class="nav-links">
+                <a href="plexos-landing.html#features">Características</a>
+                <a href="plexos-landing.html#solutions">Soluciones</a>
+                <a href="services.html" class="active">Servicios</a>
+                <a href="consultation.html" class="btn btn-primary">Solicitar Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Nuestros Servicios</h1>
+            <p>Soluciones de IA personalizadas para impulsar tu negocio</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">Servicios Especializados</h2>
+            <p class="section-subtitle">Descubre cómo nuestras soluciones de IA pueden impulsar tu negocio al siguiente nivel</p>
+            
+            <div class="services-grid">
+            
+            <!-- Service 1 -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h2>1. Desarrollo de Agentes Conversacionales de IA</h2>
+                <p>No son simples chatbots, sino sistemas inteligentes que pueden razonar, tomar decisiones y ejecutar acciones.</p>
+                
+                <h3>Características principales:</h3>
+                <ul class="feature-list">
+                    <li><strong>Agentes de IA Expertos:</strong> Sistemas avanzados que entienden contexto y toman decisiones inteligentes.</li>
+                    <li><strong>LLMs Avanzados:</strong> Impulsados por las últimas tecnologías de lenguaje natural (Gemini & OpenAI).</li>
+                    <li><strong>Conocimiento Contextual (RAG):</strong> Integración con tu documentación para respuestas precisas y validadas.</li>
+                    <li><strong>Derivación Inteligente:</strong> Transferencia fluida a agentes humanos cuando sea necesario.</li>
+                </ul>
+                
+                <div class="tech-stack">
+                    <span>Gemini AI</span>
+                    <span>OpenAI</span>
+                    <span>RAG</span>
+                    <span>NLP</span>
+                </div>
+            </div>
+            
+            <!-- Service 2 -->
+            <div class="service-card">
+                <div class="service-icon" style="color: #ff6b6b;">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h2>2. Automatización de Flujos de Trabajo</h2>
+                <p>Optimización de procesos empresariales mediante la automatización inteligente.</p>
+                
+                <h3>Características principales:</h3>
+                <ul class="feature-list">
+                    <li><strong>Integración Low-Code:</strong> Uso de n8n como motor central para conectar todos tus sistemas.</li>
+                    <li><strong>Conectividad Total:</strong> Integración con CRMs, bases de datos, herramientas de ventas y más.</li>
+                    <li><strong>Procesos Autónomos:</strong> Transformación de tareas complejas en flujos automatizados.</li>
+                    <li><strong>Escalabilidad:</strong> Soluciones que crecen con tu negocio.</li>
+                </ul>
+                
+                <div class="tech-stack">
+                    <span>n8n</span>
+                    <span>API Integration</span>
+                    <span>Workflow Automation</span>
+                    <span>Zapier</span>
+                </div>
+            </div>
+            
+            <!-- Service 3 -->
+            <div class="service-card">
+                <div class="service-icon" style="color: #00f7ff;">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h2>3. Implementación Rápida (MVP)</h2>
+                <p>Entrega ágil de soluciones funcionales para validar ideas rápidamente.</p>
+                
+                <h3>Características principales:</h3>
+                <ul class="feature-list">
+                    <li><strong>MVP en 1 Semana:</strong> Soluciones funcionales en tiempo récord.</li>
+                    <li><strong>Proceso Estructurado:</strong> Metodología clara en 3 fases.</li>
+                    <li><strong>Enfoque en Resultados:</strong> Entrega de valor desde el primer día.</li>
+                    <li><strong>Iteración Rápida:</strong> Mejora continua basada en feedback real.</li>
+                </ul>
+                
+                <h3>Nuestro Proceso:</h3>
+                <ol class="feature-list" style="list-style-type: decimal;">
+                    <li><strong>Discovery & Design:</strong> Análisis de necesidades y diseño de solución.</li>
+                    <li><strong>Desarrollo & Pruebas:</strong> Implementación con n8n y pruebas exhaustivas.</li>
+                    <li><strong>Despliegue Final:</strong> Implementación y capacitación.</li>
+                </ol>
+                
+                <div class="tech-stack">
+                    <span>MVP</span>
+                    <span>Agile</span>
+                    <span>Rapid Prototyping</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta" style="background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%); padding: 6rem 0; text-align: center;">
+        <div class="container">
+            <div class="cta-content">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">¿Listo para transformar tu negocio con IA?</h2>
+                <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto 2.5rem; font-size: 1.1rem;">Contáctanos hoy mismo para una consulta gratuita y descubre cómo podemos ayudarte a implementar soluciones de IA personalizadas para tu empresa.</p>
+                <a href="consultation.html" class="btn btn-primary">Solicitar Demo</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer style="background: var(--darker); padding: 3rem 0; text-align: center; border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <div style="margin-bottom: 2rem;">
+                <a href="index.html" class="logo" style="font-size: 1.8rem;">Plexos <span>Studios</span></a>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <a href="#" style="color: var(--text-muted); margin: 0 1rem; text-decoration: none; transition: color 0.3s ease;">Términos de Servicio</a>
+                <a href="#" style="color: var(--text-muted); margin: 0 1rem; text-decoration: none; transition: color 0.3s ease;">Política de Privacidad</a>
+                <a href="consultation.html" style="color: var(--text-muted); margin: 0 1rem; text-decoration: none; transition: color 0.3s ease;">Contacto</a>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <a href="#" style="color: var(--text-muted); margin: 0 0.5rem; font-size: 1.2rem; transition: color 0.3s ease;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color: var(--text-muted); margin: 0 0.5rem; font-size: 1.2rem; transition: color 0.3s ease;"><i class="fab fa-linkedin"></i></a>
+                <a href="#" style="color: var(--text-muted); margin: 0 0.5rem; font-size: 1.2rem; transition: color 0.3s ease;"><i class="fab fa-github"></i></a>
+            </div>
+            <div style="color: var(--text-muted); font-size: 0.9rem;">
+                &copy; 2025 Plexos Studios. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

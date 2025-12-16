@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitar Demostración - Plexos Studios</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #0a0a0f;
+            --darker-bg: #050508;
+            --card-bg: #121218;
+            --accent-purple: #8a2be2;
+            --accent-cyan: #00f7ff;
+            --accent-blue: #4d79ff;
+            --text-light: #f0f0f0;
+            --text-muted: #a0a0b0;
+            --border-color: #2a2a35;
+            --gradient-primary: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-cyan);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.6);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 12rem 0 5rem;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 5rem 0;
+        }
+
+        .form-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--darker-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-footer {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--darker-bg);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            margin: 2rem 0;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="plexos-landing.html" class="logo">Plexos <span>Studios</span></a>
+            <div class="nav-links">
+                <a href="plexos-landing.html#features">Características</a>
+                <a href="plexos-landing.html#solutions">Soluciones</a>
+                <a href="services.html">Servicios</a>
+                <a href="consultation.html" class="btn btn-primary">Solicitar Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Solicita una Demostración</h1>
+            <p>Completa el siguiente formulario y nos pondremos en contacto contigo para programar una demostración personalizada de nuestras soluciones de IA.</p>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-container">
+                <form id="consultationForm" action="procesar.php" method="POST">
+                    <div class="form-row" style="display: flex; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="name">Nombre Completo *</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="company">Empresa</label>
+                            <input type="text" id="company" name="company" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row" style="display: flex; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interests">¿Qué te interesa conocer? *</label>
+                        <select id="interests" name="interests" class="form-control" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="chatbots">Chatbots Inteligentes</option>
+                            <option value="automation">Automatización de Procesos</option>
+                            <option value="analytics">Análisis Predictivo</option>
+                            <option value="custom">Solución Personalizada</option>
+                            <option value="other">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row" style="display: flex; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="budget">Presupuesto Aproximado (€) *</label>
+                            <select id="budget" name="budget" class="form-control" required>
+                                <option value="" disabled selected>Selecciona un rango</option>
+                                <option value="200-400">200€ - 400€</option>
+                                <option value="400-600">400€ - 600€</option>
+                                <option value="600-800">600€ - 800€</option>
+                                <option value="800-1000">800€ - 1.000€</option>
+                                <option value="custom">Personalizado (especificar abajo)</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="timeline">Tiempo de Entrega Deseado *</label>
+                            <select id="timeline" name="timeline" class="form-control" required>
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="5days">5 días</option>
+                                <option value="1week">1 semana</option>
+                                <option value="2weeks">2 semanas</option>
+                                <option value="3weeks">3 semanas</option>
+                                <option value="1month">1 mes</option>
+                                <option value="custom">Personalizado (especificar abajo)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="customBudgetContainer" style="display: none;">
+                        <label for="customBudget">Especifica tu presupuesto personalizado (€)</label>
+                        <input type="number" id="customBudget" class="form-control" placeholder="Ej: 350" min="200" max="1000">
+                    </div>
+
+                    <div class="form-group" id="customTimelineContainer" style="display: none;">
+                        <label for="customTimeline">Especifica tu tiempo de entrega personalizado</label>
+                        <input type="text" id="custom_budget" name="custom_budget" class="form-control" style="margin-top: 0.5rem; display: none;" placeholder="Especifica tu presupuesto">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensaje o Preguntas</label>
+                        <textarea id="message" name="message" class="form-control" rows="5" placeholder="Cuéntanos más sobre tu proyecto" required></textarea>
+                    </div>
+
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mostrar/ocultar campo de presupuesto personalizado
+        document.getElementById('budget').addEventListener('change', function() {
+            const customBudget = document.getElementById('custom_budget');
+            customBudget.style.display = this.value === 'custom' ? 'block' : 'none';
+            if (this.value !== 'custom') customBudget.value = '';
+        });
+
+        // Mostrar/ocultar campo de plazo personalizado
+        document.getElementById('timeline').addEventListener('change', function() {
+            const customTimeline = document.getElementById('custom_timeline');
+            customTimeline.style.display = this.value === 'custom' ? 'block' : 'none';
+            if (this.value !== 'custom') customTimeline.value = '';
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">Plexos <span>Studios</span></div>
+            <div class="footer-links">
+                <a href="#">Términos de Servicio</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Contacto</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Plexos Studios. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mostrar/ocultar campos personalizados
+        document.getElementById('budget').addEventListener('change', function() {
+            const customBudgetContainer = document.getElementById('customBudgetContainer');
+            if (this.value === 'custom') {
+                customBudgetContainer.style.display = 'block';
+                document.getElementById('customBudget').setAttribute('required', 'required');
+            } else {
+                customBudgetContainer.style.display = 'none';
+                document.getElementById('customBudget').removeAttribute('required');
+            }
+        });
+
+        document.getElementById('timeline').addEventListener('change', function() {
+            const customTimelineContainer = document.getElementById('customTimelineContainer');
+            if (this.value === 'custom') {
+                customTimelineContainer.style.display = 'block';
+                document.getElementById('customTimeline').setAttribute('required', 'required');
+            } else {
+                customTimelineContainer.style.display = 'none';
+                document.getElementById('customTimeline').removeAttribute('required');
+            }
+        });
+
+        document.getElementById('consultationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aquí puedes agregar el código para enviar el formulario
+            alert('¡Gracias por tu interés! Nos pondremos en contacto contigo pronto.');
+            this.reset();
+            
+            // Ocultar los campos personalizados después de enviar
+            document.getElementById('customBudgetContainer').style.display = 'none';
+            document.getElementById('customTimelineContainer').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
